@@ -1,8 +1,9 @@
 // import { Box, Button, Flex, Text } from "@chakra-ui/react";
-import useDeleteSession from "../hooks/useDeleteSession";
-import Button from "./ReusableComponents/Button";
+// eslint-disable-next-line import/extensions
+import useDeleteSession from '@/hooks/useDeleteSession';
+import Button from './ReusableComponents/Button';
 
-const SessionCard = ({ session }) => {
+function SessionCard({ session }) {
   const { _id, createdAt, userAgent, isCurrent } = session;
 
   const { deleteSession, isPending } = useDeleteSession(_id);
@@ -33,5 +34,5 @@ const SessionCard = ({ session }) => {
       )}
     </div>
   );
-};
+}
 export default SessionCard;

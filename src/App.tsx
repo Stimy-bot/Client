@@ -1,22 +1,34 @@
-import {
-  Route,
-  Routes,
-   useNavigate
-} from "react-router-dom";
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import './index.css';
-import AppContainer from "@/components/AppContainer";
-import Register from "@/pages/Register";
-import Login from "@/pages/Login";
-import VerifyEmail from "@/pages/VerifyEmail";
-import ForgotPassword from "@/pages/ForgotPassword";
-import ResetPassword from "@/pages/ResetPassword";
-import Profile from "@/pages/Profile";
-import Settings from "@/pages/Settings";
-import Notfound from '@/pages/Notfound';
+// eslint-disable-next-line import/extensions
+import AppContainer from '@/components/AppContainer';
+// eslint-disable-next-line import/extensions
+import Register from '@/pages/Register';
+// eslint-disable-next-line import/extensions
+import Login from '@/pages/Login';
+// eslint-disable-next-line import/extensions
+import VerifyEmail from '@/pages/VerifyEmail';
+// eslint-disable-next-line import/extensions
+import ForgotPassword from '@/pages/ForgotPassword';
+// eslint-disable-next-line import/extensions
+import ResetPassword from '@/pages/ResetPassword';
+// eslint-disable-next-line import/extensions
+import Profile from '@/pages/Profile';
+// eslint-disable-next-line import/extensions
+import Settings from '@/pages/Settings';
+// eslint-disable-next-line import/extensions
+import Notfound from '@/pages/Notfound/';
+// eslint-disable-next-line import/extensions
 import About from '@/pages/About';
+// eslint-disable-next-line import/extensions
 import Contact from '@/pages/Contact';
+// eslint-disable-next-line import/extensions
 import Projects from '@/pages/Projects';
-import { setNavigate } from "@/lib/navigation";
+// eslint-disable-next-line import/extensions
+import { setNavigate } from '@/lib/navigation';
+// eslint-disable-next-line import/extensions
+// import Header from '@/components/Header/Header';
+// import Footer from './components/Footer/Footer';
 
 function App() {
   // set the navigate function on our API client for use in the axios error interceptor

@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 
+// eslint-disable-next-line react/display-name
 const Notfound: React.FC = memo(() => (
   <div className="">
     <div className="h-screen w-screen flex flex-col justify-center items-center bg-dark-hard">

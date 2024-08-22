@@ -14,7 +14,12 @@ import { Link, useNavigate } from 'react-router-dom';
 //   Link as ChakraLink,
 //   Container,
 // } from '@chakra-ui/react';
-import MainLayout from '@/MainLayout';
+// eslint-disable-next-line import/extensions
+import MainLayout from '@/components/Layout/MainLayout';
+// eslint-disable-next-line import/extensions
+import Input from '@/components/ReusableComponents/Input';
+// eslint-disable-next-line import/extensions
+import Button from '@/components/ReusableComponents/Button';
 import { register } from '../../lib/api';
 
 function Register() {
@@ -43,36 +48,40 @@ function Register() {
           <h1 className="font-roboto text-2xl font-bold text-center text-dark-hard mb-8 dark:text-[#5a7184] ">
             Create an account
           </h1>
-          <Box rounded="lg" bg="gray.700" boxShadow="lg" p={8}>
+          <div className='' rounded="lg" bg="gray.700" boxShadow="lg" p={8}>
             {isError && (
-              <Box mb={3} color="red.400">
+              <div mb={3} color="red.400">
                 {error?.message || 'An error occurred'}
-              </Box>
+              </div>
             )}
-            <Stack spacing={4}>
-              <FormControl id="email">
-                <FormLabel>Email address</FormLabel>
+            <div spacing={4}>
+              <div id="email">
+              <label
+                  htmlFor="email"
+                  className="text-[#5a7184] font-semibold block"
+                >Email address</label>
                 <Input
                   type="email"
                   value={email}
+                  id="email"
                   onChange={(e) => setEmail(e.target.value)}
                   autoFocus
                 />
-              </FormControl>
-              <FormControl id="password">
-                <FormLabel>Password</FormLabel>
+              </div>
+              <div id="password">
+                <label htmlFor="password">Password</label>
                 <Input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <Text color="text.muted" fontSize="xs" textAlign="left" mt={2}>
+                <span color="text.muted" fontSize="xs" textAlign="left" mt={2}>
                   - Must be at least 6 characters long.
-                </Text>
-              </FormControl>
-              <FormControl id="confirmPassword">
-                <FormLabel>Confirm Password</FormLabel>
-                <Input
+                </span>
+              </div>
+              <div id="confirmPassword">
+                <label htmlFor="password">Confirm Password</label>
+                <input
                   type="password"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
@@ -81,9 +90,9 @@ function Register() {
                     createAccount({ email, password, confirmPassword })
                   }
                 />
-              </FormControl>
+              </div>
               <Button
-                my={2}
+                className='my-2'
                 isLoading={isPending}
                 isDisabled={
                   !email || password.length < 6 || password !== confirmPassword
@@ -94,14 +103,12 @@ function Register() {
               >
                 Create Account
               </Button>
-              <Text align="center" fontSize="sm" color="text.muted">
-                Already have an account?{' '}
-                <ChakraLink as={Link} to="/login">
-                  Sign in
-                </ChakraLink>
-              </Text>
-            </Stack>
-          </Box>
+              <p className="text-sm text-center">
+                Already have an account?{''}
+                <Link to="/login">Sign in</Link>
+              </p>
+            </div>
+          </div>
         </div>
       </section>
     </MainLayout>

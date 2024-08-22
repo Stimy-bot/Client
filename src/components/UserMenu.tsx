@@ -1,8 +1,10 @@
 // import { Avatar, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Link, useNavigate } from "react-router-dom";
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { Link, useNavigate } from 'react-router-dom';
+// eslint-disable-next-line import/extensions
 import { images } from '@/constants';
-import { logout } from "@/lib/api";
+// eslint-disable-next-line import/extensions
+import { logout } from '@/lib/api';
 
 const UserMenu = () => {
   const navigate = useNavigate();

@@ -1,17 +1,20 @@
-import { useState } from "react";
-import { useMutation } from "@tanstack/react-query";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import MainLayout from "../../components/Layout/MainLayout";
-import Button from "@/components/ReusableComponents/Button";
-import Input from "@/components/ReusableComponents/Input";
-import { login } from "../../lib/api";
+import { useState } from 'react';
+import { useMutation } from '@tanstack/react-query';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+// eslint-disable-next-line import/extensions
+import MainLayout from '@/components/Layout/MainLayout';
+// eslint-disable-next-line import/extensions
+import Button from '@/components/ReusableComponents/Button';
+// eslint-disable-next-line import/extensions
+import Input from '@/components/ReusableComponents/Input';
+import { login } from '../../lib/api';
 
-const Login = () => {
+function Login() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const redirectUrl = location.state?.redirectUrl || "/";
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const redirectUrl = location.state?.redirectUrl || '/';
 
   const {
     mutate: signIn,
@@ -37,7 +40,7 @@ const Login = () => {
             {isError && (
               <div className="mb-3 text-red-400">Invalid email or password</div>
             )}
-       <div className="flex flex-col mb-6 w-full">
+            <div className="flex flex-col mb-6 w-full">
               <div id="email">
                 <label
                   htmlFor="email"
@@ -46,6 +49,8 @@ const Login = () => {
                   Email address
                 </label>
                 <Input
+                  variant="primary"
+                  size="lg"
                   type="email"
                   id="email"
                   value={email}
@@ -54,11 +59,15 @@ const Login = () => {
                 />
               </div>
               <div id="password">
-                        <label
+                <label
                   htmlFor="password"
                   className="text-[#5a7184] font-semibold block"
-                >Password</label>
+                >
+                  Password
+                </label>
                 <Input
+                  variant="primary"
+                  size="lg"
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -68,10 +77,7 @@ const Login = () => {
                 />
               </div>
 
-              <Link
-                to="/password/forgot"
-               className="text-sm"
-              >
+              <Link to="/password/forgot" className="text-sm">
                 Forgot password?
               </Link>
               <Button
@@ -91,5 +97,5 @@ const Login = () => {
       </section>
     </MainLayout>
   );
-};
+}
 export default Login;
