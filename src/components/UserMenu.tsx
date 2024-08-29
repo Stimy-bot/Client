@@ -1,19 +1,17 @@
-// import { Avatar, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
+import { Avatar, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Link, useNavigate } from 'react-router-dom';
-// eslint-disable-next-line import/extensions
 import { images } from '@/constants';
-// eslint-disable-next-line import/extensions
 import { logout } from '@/lib/api';
 
-const UserMenu = () => {
+function UserMenu() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const { mutate: signOut } = useMutation({
     mutationFn: logout,
     onSettled: () => {
       queryClient.clear();
-      navigate("/login", { replace: true });
+      navigate('/login', { replace: true });
     },
   });
 
@@ -35,5 +33,5 @@ const UserMenu = () => {
       </MenuList>
     </Menu>
   );
-};
+}
 export default UserMenu;

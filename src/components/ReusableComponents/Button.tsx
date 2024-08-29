@@ -2,13 +2,19 @@ import { cva, VariantProps } from 'class-variance-authority';
 import { ButtonHTMLAttributes, ReactNode } from 'react';
 import cn from '../../utils/cn';
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
+interface ButtonProps
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
   children: ReactNode;
 }
 
 function Button({ children, className, variant, size, ...props }: ButtonProps) {
   return (
-    <button className={cn(buttonVariants({ variant, size, className }))}
+    // eslint-disable-next-line react/button-has-type
+    <button
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
+      className={cn(buttonVariants({ variant, size, className }))}
+      // eslint-disable-next-line react/jsx-props-no-spreading
       {...props}
     >
       {children}
@@ -16,23 +22,26 @@ function Button({ children, className, variant, size, ...props }: ButtonProps) {
   );
 }
 
-const buttonVariants = cva("rounded-lg", {
+const buttonVariants = cva('rounded-lg', {
   variants: {
     variant: {
-      primary: "text-white bg-primary font-bold text-lg py-4 px-8 w-full hover:opacity-75",
-      secondary: "text-dark-light p-2 bg-dark-hard hover:text-white hover:opacity-75 border-1 mb-2",
-      danger: "bg-red-700 w-full font-semibold text-white text-lg p-4 hover:opacity-75"
+      primary:
+        'text-white bg-primary font-bold text-lg py-4 px-8 w-full hover:opacity-75',
+      secondary:
+        'text-dark-light p-2 bg-dark-hard hover:text-white hover:opacity-75 border-1 mb-2',
+      danger:
+        'bg-red-700 w-full font-semibold text-white text-lg p-4 hover:opacity-75',
     },
     size: {
-      sm: "text-sm px-1 py-0",
-      md: "text-base px-2 py-1",
-      lg: "text-xl px-4 py-4",
+      sm: 'text-sm px-1 py-0',
+      md: 'text-base px-2 py-1',
+      lg: 'text-xl px-4 py-4',
     },
   },
   defaultVariants: {
-    variant: "primary",
-    size: "md",
+    variant: 'primary',
+    size: 'md',
   },
 });
 
-export default Button
+export default Button;

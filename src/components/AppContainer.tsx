@@ -1,15 +1,14 @@
-import Spinner from "./ReusableComponents/Spinner";
-import { Navigate, Outlet } from "react-router-dom";
-import useAuth from "@/hooks/useAuth";
-import UserMenu from "@/components/UserMenu";
+import { Navigate, Outlet } from 'react-router-dom';
+import Spinner from './ReusableComponents/Spinner';
+import useAuth from '@/hooks/useAuth';
+import UserMenu from '@/components/UserMenu';
 
-const AppContainer = () => {
+function AppContainer() {
   const { user, isLoading } = useAuth();
 
+  // eslint-disable-next-line no-nested-ternary
   return isLoading ? (
-    <main
-      className="flex flex-col w-full h-4/5"
-    >
+    <main className="flex flex-col w-full h-4/5">
       <Spinner className="mb-4" />
     </main>
   ) : user ? (
@@ -26,5 +25,5 @@ const AppContainer = () => {
       }}
     />
   );
-};
+}
 export default AppContainer;

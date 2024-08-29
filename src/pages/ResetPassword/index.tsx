@@ -1,16 +1,17 @@
-import { useSearchParams, Link } from "react-router-dom";
-// import {
-//   Container,
-//   Flex,
-//   Link as ChakraLink,
-//   VStack,
-//   Alert,
-//   AlertIcon,
-//   Text,
-// } from "@chakra-ui/react";
-import ResetPasswordForm from "@/components/ResetPasswordForm";
+import { useSearchParams, Link } from 'react-router-dom';
+import {
+  Container,
+  Flex,
+  Link as ChakraLink,
+  VStack,
+  Alert,
+  AlertIcon,
+  Text,
+} from "@chakra-ui/react";
+// eslint-disable-next-line import/extensions
+import ResetPasswordForm from '@/components/ResetPasswordForm';
 
-const ResetPassword = () => {
+function ResetPassword() {
   const [searchParams] = useSearchParams();
   const code = searchParams.get("code");
   const exp = Number(searchParams.get("exp"));
@@ -37,5 +38,5 @@ const ResetPassword = () => {
       </Container>
     </Flex>
   );
-};
+}
 export default ResetPassword;

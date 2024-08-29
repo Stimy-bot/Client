@@ -1,26 +1,14 @@
-import { useState } from "react";
-import { useMutation } from "@tanstack/react-query";
-import { Link } from "react-router-dom";
-// import {
-//   Flex,
-//   Box,
-//   FormControl,
-//   FormLabel,
-//   Input,
-//   Stack,
-//   Button,
-//   Heading,
-//   Text,
-//   Link as ChakraLink,
-//   Container,
-//   Alert,
-//   AlertIcon,
-// } from "@chakra-ui/react";
-import MainLayout from "../../components/Layout/MainLayout";
-import { sendPasswordResetEmail } from "../../lib/api";
+import { useState } from 'react';
+import { useMutation } from '@tanstack/react-query';
+import { Link } from 'react-router-dom';
+import { Alert, AlertIcon } from '@chakra-ui/react';
+import MainLayout from '../../components/Layout/MainLayout';
+// eslint-disable-next-line import/extensions
+import Button from '@/components/ReusableComponents/Button';
+import { sendPasswordResetEmail } from '../../lib/api';
 
-const ForgotPassword = () => {
-  const [email, setEmail] = useState("");
+function ForgotPassword() {
+  const [email, setEmail] = useState('');
 
   const {
     mutate: sendPasswordReset,
@@ -39,13 +27,13 @@ const ForgotPassword = () => {
           <h1 className="font-roboto text-2xl font-bold text-center text-dark-hard mb-8 dark:text-[#5a7184] ">
             Reset your password
           </h1>
-          <Box rounded="lg" bg="gray.700" boxShadow="lg" p={8}>
+          <div className="p-8 rounded-lg border-solid border-dark-light shadow-2xl">
             {isError && (
-              <Box mb={3} color="red.400">
-                {error.message || "An error occurred"}
-              </Box>
+              <div className="mb-3 text-red-300">
+                {error.message || 'An error occurred'}
+              </div>
             )}
-            <Stack spacing={4}>
+            <div className="spacing-y-4">
               {isSuccess ? (
                 <Alert status="success" borderRadius={12}>
                   <AlertIcon />
@@ -53,17 +41,24 @@ const ForgotPassword = () => {
                 </Alert>
               ) : (
                 <>
-                  <FormControl id="email">
-                    <FormLabel>Email address</FormLabel>
-                    <Input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      autoFocus
-                    />
-                  </FormControl>
+                  <div id="email">
+                    <label
+                      htmlFor="email"
+                      className="text-[#5a7184] font-semibold block"
+                    >
+                      Email address
+                      <input
+                        type="email"
+                        value={email}
+                        placeholder="Enter email"
+                        onChange={(e) => setEmail(e.target.value)}
+                        // autoFocus
+                        className="placeholder:text-[#959ead] text-dark-hard my-3 rounded-lg px-5 py-4 font-semibold block outline-none border w-full"
+                      />
+                    </label>
+                  </div>
                   <Button
-                    my={2}
+                    className="bg-primary text-white font-bold text-lg py-4 px-8 w-full rounded-lg my-6 hover:opacity-75"
                     isLoading={isPending}
                     isDisabled={!email}
                     onClick={() => sendPasswordReset(email)}
@@ -72,21 +67,21 @@ const ForgotPassword = () => {
                   </Button>
                 </>
               )}
-              <Text align="center" fontSize="sm" color="text.muted">
-                Go back to{" "}
-                <ChakraLink as={Link} to="/login" replace>
+              <p className="text-dark-hard text-sm text-center dark:text-dark-light">
+                Go back to{' '}
+                <Link to="/login" replace>
                   Sign in
-                </ChakraLink>
+                </Link>
                 &nbsp;or&nbsp;
-                <ChakraLink as={Link} to="/register" replace>
+                <Link to="/register" replace>
                   Sign up
-                </ChakraLink>
-              </Text>
-            </Stack>
-          </Box>
+                </Link>
+              </p>
+            </div>
+          </div>
         </div>
       </section>
     </MainLayout>
   );
-};
+}
 export default ForgotPassword;
